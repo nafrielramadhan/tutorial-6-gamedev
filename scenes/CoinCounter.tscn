@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3vovdgenig7e"]
+
+[ext_resource type="Script" path="res://scripts/coin_counter.gd" id="1_eejp2"]
+[ext_resource type="FontFile" uid="uid://c1es1jqn4ro0b" path="res://assets/assetsTutor6/GrapeSoda.ttf" id="1_vmare"]
+
+[node name="CoinCounter" type="MarginContainer"]
+offset_left = 183.0
+offset_right = 184.0
+offset_bottom = 46.0
+
+[node name="CoinCounter" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.901961, 0.298039, 1)
+theme_override_fonts/font = ExtResource("1_vmare")
+theme_override_font_sizes/font_size = 45
+script = ExtResource("1_eejp2")

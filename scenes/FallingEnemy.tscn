@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://u4j57i3yg1vq"]
+
+[ext_resource type="Script" path="res://scripts/falling_item.gd" id="1_nfywq"]
+[ext_resource type="Texture2D" uid="uid://u1jtuxja80pp" path="res://assets/kenney_platformerpack/PNG/Enemies/barnacle.png" id="2_dxpk1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vxt6n"]
+radius = 11.0795
+height = 28.0899
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8akh"]
+radius = 39.0
+height = 102.0
+
+[node name="FallingItem" type="RigidBody2D"]
+script = ExtResource("1_nfywq")
+
+[node name="Pinkitem" type="Sprite2D" parent="."]
+position = Vector2(1.16415e-10, 11)
+rotation = 3.14065
+scale = Vector2(0.858599, 0.940682)
+texture = ExtResource("2_dxpk1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(3.52, 3.56)
+shape = SubResource("CapsuleShape2D_vxt6n")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_w8akh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_FallArea_body_entered"]

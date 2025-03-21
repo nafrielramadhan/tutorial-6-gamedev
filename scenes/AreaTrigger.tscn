@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=3 uid="uid://4y8egpi2trnr"]
+
+[sub_resource type="GDScript" id="GDScript_adyiv"]
+script/source = "extends Area2D
+
+@export var sceneName: String
+
+func _on_Area_Trigger_body_entered(body):
+	var current_scene = get_tree().get_current_scene().get_name()
+	if body.get_name() == \"Player\":
+		if current_scene == sceneName:
+			global.decrease_lives() 
+
+		if global.lives <= 0:
+			call_deferred(\"game_over\") 
+		else:
+			call_deferred(\"restart_level\")  
+		
+func game_over():
+	get_tree().change_scene_to_file(\"res://scenes/LoseScreen.tscn\")
+
+func restart_level():
+	get_tree().change_scene_to_file(\"res://scenes/\" + sceneName + \".tscn\")
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7nlvx"]
+
+[node name="Area Trigger" type="Area2D"]
+script = SubResource("GDScript_adyiv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7nlvx")
+
+[connection signal="body_entered" from="." to="." method="_on_Area_Trigger_body_entered"]

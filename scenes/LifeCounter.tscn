@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cneiuec24r70n"]
+
+[ext_resource type="Script" path="res://scripts/life_counter.gd" id="1_e4ypf"]
+[ext_resource type="FontFile" uid="uid://c1es1jqn4ro0b" path="res://assets/assetsTutor6/GrapeSoda.ttf" id="1_hitck"]
+
+[node name="LifeCounter" type="MarginContainer"]
+offset_left = 1.0
+offset_right = 2.0
+offset_bottom = 46.0
+
+[node name="LifeCounter" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.918668, 0.482679, 1)
+theme_override_fonts/font = ExtResource("1_hitck")
+theme_override_font_sizes/font_size = 45
+script = ExtResource("1_e4ypf")

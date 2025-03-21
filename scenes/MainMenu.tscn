@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://obtl3yymem6q"]
+
+[ext_resource type="FontFile" uid="uid://c1es1jqn4ro0b" path="res://assets/assetsTutor6/GrapeSoda.ttf" id="1_0cjgl"]
+[ext_resource type="Script" path="res://scripts/new_game_button.gd" id="1_rhywf"]
+[ext_resource type="Texture2D" uid="uid://cs48v0vvotk7y" path="res://assets/assetsTutor6/Frame 1-15.png" id="1_u13we"]
+[ext_resource type="Script" path="res://scripts/select_stage_button.gd" id="2_437jt"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frame1-15" type="Sprite2D" parent="."]
+position = Vector2(569, 326.75)
+scale = Vector2(0.681771, 0.681771)
+texture = ExtResource("1_u13we")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Title" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_0cjgl")
+theme_override_font_sizes/font_size = 96
+text = "Planet Adventure!"
+
+[node name="NewGameButton" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.902182, 0.296322, 1)
+theme_override_fonts/font = ExtResource("1_0cjgl")
+theme_override_font_sizes/font_size = 60
+text = "New Game"
+script = ExtResource("1_rhywf")
+scene_to_load = "Level1"
+
+[node name="SelectStageButton" type="LinkButton" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.901961, 0.298039, 1)
+theme_override_fonts/font = ExtResource("1_0cjgl")
+theme_override_font_sizes/font_size = 60
+text = "Stage Select"
+script = ExtResource("2_437jt")
+scene_to_load = "StageSelect"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/NewGameButton" to="HBoxContainer/VBoxContainer/NewGameButton" method="_on_New_Game_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/SelectStageButton" to="HBoxContainer/VBoxContainer/SelectStageButton" method="_on_Select_Stage_pressed"]
